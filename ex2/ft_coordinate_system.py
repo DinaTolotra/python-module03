@@ -11,7 +11,7 @@ def get_coord_input() -> tuple[str, str, str] | None:
     )
     try:
         line: str = input(input_prompt)
-        input_list: list[str] = line.split(",")
+        input_list = line.split(",")
     except BaseException:
         pass
     if input_list and len(input_list) == 3:
@@ -29,20 +29,24 @@ def try_convert_str_to_float(s: str) -> float:
         )
 
 
-def convert_list_content(coord_str: tuple[str, str, str]) -> tuple[float]:
+def convert_list_content(
+        coord_str: tuple[str, str, str]
+        ) -> tuple[float, float, float]:
+    res: tuple[float, float, float]
     try:
-        return (
+        res = (
             try_convert_str_to_float(coord_str[0]),
             try_convert_str_to_float(coord_str[1]),
             try_convert_str_to_float(coord_str[2])
         )
     except ValueError as error:
         print(error)
+    return res
 
 
-def get_player_pos() -> tuple[float, float, float] | None:
+def get_player_pos() -> tuple[float, float, float]:
     coord: tuple[float, float, float] | None = None
-    coord_str: list[str]
+    coord_str: tuple[str, str, str] | None
     while not coord:
         coord_str = get_coord_input()
         if coord_str:
