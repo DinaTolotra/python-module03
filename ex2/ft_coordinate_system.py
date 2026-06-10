@@ -2,33 +2,27 @@ import math
 
 
 def get_coord_input() -> list[str]:
-    line: str
-
-    line = input("Enter new coordinates " +
-                 "as floats in format " +
-                 "'x,y,z': ")
+    line: str = input("Enter new coordinates " +
+                      "as floats in format " +
+                      "'x,y,z': ")
     return line.split(",")
 
 
 def convert_list_content(lst: list[str]) -> list[float]:
-    res: list[float]
-
-    res = []
-    for i in range(len(lst)):
+    res: list[float] = []
+    for elem in lst:
         try:
-            res.append(float(lst[i]))
-        except ValueError as e:
+            res.append(float(elem))
+        except ValueError as error:
             print("Error on parameter",
-                  f"'{lst[i]}': {e}")
+                  f"'{elem}': {error}")
             res.clear()
     return res
 
 
 def get_player_pos() -> tuple[float, float, float]:
-    coord: tuple[float, float, float]
+    coord: tuple[float, float, float] = ()
     coord_str: list[str]
-
-    coord = ()
     while not coord:
         coord_str = get_coord_input()
         if len(coord_str) == 3:

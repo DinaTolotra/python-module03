@@ -10,8 +10,7 @@ def parse_arg(arg: list[str]) -> list[int]:
             nb = int(arg[i])
         except ValueError:
             print(f"Invalid parameter: '{arg[i]}'")
-        else:
-            result.append(nb)
+        result += [nb]
     return result
 
 
