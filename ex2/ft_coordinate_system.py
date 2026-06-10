@@ -31,8 +31,8 @@ def try_convert_str_to_float(s: str) -> float:
 
 def convert_list_content(
         coord_str: tuple[str, str, str]
-        ) -> tuple[float, float, float]:
-    res: tuple[float, float, float]
+        ) -> tuple[float, float, float] | None:
+    res: tuple[float, float, float] | None = None
     try:
         res = (
             try_convert_str_to_float(coord_str[0]),
