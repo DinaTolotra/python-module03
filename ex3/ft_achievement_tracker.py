@@ -41,21 +41,39 @@ if __name__ == "__main__":
     print("")
 
     print("All distinct achievements:",
-          alice | bob | charlie | dylan, "\n")
+          alice.union(bob).
+          union(charlie).
+          union(dylan),
+          "\n")
 
     print("Common achievements:",
-          alice & bob & charlie & dylan, "\n")
+          alice.intersection(bob).
+          intersection(charlie).
+          intersection(dylan),
+          "\n")
 
     print("Only Alice has:",
-          alice - bob - charlie - dylan, "\n")
+          alice.difference(bob).
+          difference(charlie).
+          difference(dylan),
+          "\n")
     print("Only Bob has:",
-          bob - alice - charlie - dylan, "\n")
+          bob.difference(alice).
+          difference(charlie).
+          difference(dylan),
+          "\n")
     print("Only Charlie has:",
-          charlie - alice - bob - dylan, "\n")
+          charlie.difference(alice).
+          difference(bob).
+          difference(dylan),
+          "\n")
     print("Only Dylan has:",
-          dylan - alice - charlie - bob, "\n")
+          dylan.difference(alice).
+          difference(bob).
+          difference(charlie),
+          "\n")
 
-    print("Alive is missing:", get_achievements() - alice)
-    print("Bob is missing:", get_achievements() - bob)
-    print("Charlie is missing:", get_achievements() - charlie)
-    print("Dylan is missing:", get_achievements() - dylan)
+    print("Alive is missing:", get_achievements().difference(alice))
+    print("Bob is missing:", get_achievements().difference(bob))
+    print("Charlie is missing:", get_achievements().difference(charlie))
+    print("Dylan is missing:", get_achievements().difference(dylan))
