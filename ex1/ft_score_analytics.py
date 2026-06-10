@@ -1,31 +1,33 @@
 import sys
 
 
-def parse_arg(arg: list[str]) -> list[int]:
+def parse_arg(argv: list[str]) -> list[int]:
     result: list[int] = list()
     nb: int
-
-    for i in range(1, len(arg)):
+    for arg in argv[1:]:
         try:
-            nb = int(arg[i])
+            nb = int(arg)
         except ValueError:
-            print(f"Invalid parameter: '{arg[i]}'")
+            print(f"Invalid parameter: '{arg}'")
         result += [nb]
     return result
 
 
 if __name__ == "__main__":
-    print("=== Player Score Analytics ===")
     score_list: list[int] = parse_arg(sys.argv)
-    if len(score_list) > 0:
+    len_score: float = len(score_list)
+    print("=== Player Score Analytics ===")
+    if len_score > 0:
+        min_score: int = min(score_list)
+        max_score: int = max(score_list)
+        sum_score: int = sum(score_list)
         print("Scores processed:", score_list)
-        print("Total players:", len(score_list))
-        print("Total score:", sum(score_list))
-        print("Average score:",
-              sum(score_list) / len(score_list))
-        print("High score:", max(score_list))
-        print("Low score:", min(score_list))
-        print("Score range:", max(score_list) - min(score_list))
+        print("Total players:", len_score)
+        print("Total score:", sum_score)
+        print("Average score:", sum_score / len_score)
+        print("High score:", max_score)
+        print("Low score:", min_score)
+        print("Score range:", max_score - min_score)
     else:
         print(
             "No scores provided. Usage:",
