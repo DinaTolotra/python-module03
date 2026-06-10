@@ -9,9 +9,9 @@ if __name__ == "__main__":
     print("Program name:", sys.argv[0])
     if argc > 1:
         print("Arguments received:", argc - 1)
-        for arg in argv:
-            print(f"Argument {index}: {arg}")
-            index += 1
-    else:
+    for arg in argv:
+        print(f"Argument {index}: {arg}")
+        index += 1
+    if argc == 1:
         print("No arguments provided!")
     print("Total arguments:", argc)
